@@ -1,5 +1,6 @@
 package utility;
 
+import java.util.Hashtable;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -13,8 +14,10 @@ public class SeleniumOperations
 {
 	public static WebDriver driver =null;
 	
+	 public static Hashtable<String,Object> outputParameters=new Hashtable<String, Object>();
+	 
 //browserLaunch
-	public static void browserLaunch(Object[]inputParameters)
+	public static Hashtable<String,Object> browserLaunch(Object[]inputParameters)
 	{
 		try{
 			
@@ -40,44 +43,56 @@ public class SeleniumOperations
 		driver.manage().window().maximize();
         	
         }
+        outputParameters.put("STATUS", "pass");
+        outputParameters.put("MESSAGE", "Method used:browserLaunch,Input given:" + inputParameters[0].toString());
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			
+			outputParameters.put("STATUS", "fail");
+	        outputParameters.put("MESSAGE", "Method used:browserLaunch,Input given:" + inputParameters[0].toString());
 		}
+		return outputParameters;
 	}
 	//openApplication
-	public static void openApplication(Object[]inputParameters)
+	public static Hashtable<String,Object> openApplication(Object[]inputParameters)
 	{
 		try{
 			
 		String strngUrl=(String) inputParameters[0];
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.get(strngUrl);
+		outputParameters.put("STATUS", "pass");
+        outputParameters.put("MESSAGE", "Method used:openApplication,Input given:" + inputParameters[0].toString());
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			outputParameters.put("STATUS", "fail");
+	        outputParameters.put("MESSAGE", "Method used:openApplication,Input given:" + inputParameters[0].toString());
 		}
-       
+		return outputParameters;
 	}
 	//clickOncancel
-	public static void clickOnElement(Object[]inputParameters)
+	public static  Hashtable<String,Object> clickOnElement(Object[]inputParameters)
 	{
 	try{
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
      String locator=(String) inputParameters[0];
 		
-		driver.findElement(By.xpath(locator)).click();	
+		driver.findElement(By.xpath(locator)).click();
+		outputParameters.put("STATUS", "pass");
+        outputParameters.put("MESSAGE", "Method used:clickOnElement,Input given:" + inputParameters[0].toString());
 	    }
 	catch(Exception e)
 	   { 
-		System.out.println(e);
+		outputParameters.put("STATUS", "fail");
+        outputParameters.put("MESSAGE", "Method used:clickOnElement,Input given:" + inputParameters[0].toString());
       	}
+	return outputParameters;
      	}
 	//mouseOveraction
 	
-	public static void mouseOverAction(Object[]inputParameters)
+	public static Hashtable<String,Object>  mouseOverAction(Object[]inputParameters)
 	{  
 		try{
 			driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -87,32 +102,39 @@ public class SeleniumOperations
 		 
 		 WebElement mouseover=driver.findElement(By.xpath(locator));
 		 act.moveToElement(mouseover).build().perform();
+		 outputParameters.put("STATUS", "pass");
+	        outputParameters.put("MESSAGE", "Method used:mouseOverAction,Input given:" + inputParameters[0].toString());
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			outputParameters.put("STATUS", "fail");
+	        outputParameters.put("MESSAGE", "Method used:mouseOverAction,Input given:" + inputParameters[0].toString());
 		}
-		 
+		return outputParameters;
 	}
 	
 	//sendKeysMethod
-	public static void sendText(Object[]inputParameters)
+	public static  Hashtable<String,Object>  sendText(Object[]inputParameters)
 	{
 		try{
 		String locator=(String) inputParameters[0];
 		String sendText=(String) inputParameters[1];
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		driver.findElement(By.xpath(locator)).sendKeys(sendText);
+		outputParameters.put("STATUS", "pass");
+        outputParameters.put("MESSAGE", "Method used:sendText,Input given:" + inputParameters[0].toString());
 		}
 		catch(Exception e)
 		{
-			System.out.println(e);
+			outputParameters.put("STATUS", "fail");
+	        outputParameters.put("MESSAGE", "Method used:sendText,Input given:" + inputParameters[0].toString());
 		}
+		return outputParameters;	
 	}
 	//validation
 	
 	
-	public static void validation(Object[]inputParameters)
+	public static Hashtable<String,Object> validation(Object[]inputParameters)
 	{
 		try{
 		String xpath=(String) inputParameters[0];
@@ -121,18 +143,22 @@ public class SeleniumOperations
 		
 		if(findedText.equalsIgnoreCase(givenText))
 		{
-			System.out.println("Test Case Pass");
+			System.out.println("Test case is pass");
 		}
 		else
 		{
-			System.out.println("Test Case Fail");	
+			System.out.println("Test case is fail");
+			
 			}
-		
+		outputParameters.put("STATUS", "pass");
+        outputParameters.put("MESSAGE", "Method used:validation,Input given:" + inputParameters[0].toString());
 	}
      catch(Exception e)
 		{
-    	 System.out.println(e);
+    	 outputParameters.put("STATUS", "fail");
+	        outputParameters.put("MESSAGE", "Method used:validation,Input given:" + inputParameters[0].toString());
 		}
+		return outputParameters;	
 	}
 }
 	
