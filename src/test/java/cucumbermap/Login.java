@@ -15,8 +15,8 @@ public class Login
 	public void bLaunch(String name,String location)
 	{	
 		Object[] input=new Object[2];
-        input[0]="name";
-        input[1]="location";
+        input[0]=name;
+        input[1]=location;
      SeleniumOperations.browserLaunch(input);
 	
 

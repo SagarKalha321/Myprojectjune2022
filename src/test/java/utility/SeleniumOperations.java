@@ -41,7 +41,7 @@ public class SeleniumOperations
 		
 	     driver=new ChromeDriver();
 		driver.manage().window().maximize();
-        	
+	      driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);	
         }
         outputParameters.put("STATUS", "pass");
         outputParameters.put("MESSAGE", "Method used:browserLaunch,Input given:" + inputParameters[0].toString());
@@ -139,6 +139,7 @@ public class SeleniumOperations
 		try{
 		String xpath=(String) inputParameters[0];
 		String givenText=(String) inputParameters[1];
+		 Thread.sleep(5000);
 		String findedText=driver.findElement(By.xpath(xpath)).getText();
 		
 		if(findedText.equalsIgnoreCase(givenText))
