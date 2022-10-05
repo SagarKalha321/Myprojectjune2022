@@ -11,30 +11,28 @@ import utility.SeleniumOperations;
 public class Login
 {
 
-	@Given("^User provide browser name as \"([^\"]*)\" and exe location as \"([^\"]*)\"$")
-	public void bLaunch(String name,String location)
+	@Given ("^User provide browser name as \"(.*)\" and exe location$") 
+	public void bLaunch(String bName)
 	{	
-		Object[] input=new Object[2];
-        input[0]=name;
-        input[1]=location;
+		Object[]input=new Object[1];
+		input[0]=bName;
+        
      SeleniumOperations.browserLaunch(input);
 	
 
 	}
 
-	@Given("^user enters url as \"([^\"]*)\"$")
-	public void openApp(String url)
+	@Given ("^user enters url as$") 
+	public void openApp()
 	{
-		Object[]input1=new Object[1];
-		input1[0]=url;
 		
-		SeleniumOperations.openApplication(input1);
+		SeleniumOperations.openApplication();
 		
 	}
 
 
 	@Given("^user cancel initial login window$")
-	public void openApp()
+	public void click()
 	{
 		Object[]input2=new Object[1];
 		input2[0]="//*[@class='_2KpZ6l _2doB4z']";

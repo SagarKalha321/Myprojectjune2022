@@ -67,10 +67,9 @@ driver.findElementByXPath("//*[@tabindex='4']").sendKeys("near ssvmk");
 //enterAddress
 
 driver.findElementByXPath("//*[@rows='4']").sendKeys("Khadambe khurd");
-//clickonHome
+//clickonSave
 
-driver.findElementByXPath("//*[@class='_1XFPmK']").click();
-
+driver.findElementByXPath("(//*[@type='button'])[2]").click();
 
 
 

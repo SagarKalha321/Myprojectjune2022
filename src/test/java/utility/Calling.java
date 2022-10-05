@@ -18,7 +18,7 @@ public class Calling
 		Object[]input1=new Object[1];
 		input1[0]="https://www.flipkart.com/";
 		
-		SeleniumOperations.openApplication(input1);
+		SeleniumOperations.click(input1);
 		
 		//clickOncancel
 		Object[]input2=new Object[1];

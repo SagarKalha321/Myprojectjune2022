@@ -2,8 +2,8 @@
 Feature: Login functionality
 
 Background: User cancelled initial login window
-Given User provide browser name as "Chrome" and exe location as "D:\\automation suport\\chromedriver.exe"
-Given user enters url as "https://www.flipkart.com/"
+Given User provide browser name as "Chrome" and exe location 
+Given user enters url as 
 Given user cancel initial login window
 
 @smoketest
